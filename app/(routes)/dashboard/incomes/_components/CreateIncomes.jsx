@@ -59,22 +59,22 @@ function CreateIncomes({ refreshData }) {
       <Dialog>
         <DialogTrigger asChild>
           <div
-            className="bg-slate-100 p-10 rounded-2xl
-            items-center flex flex-col border-2 border-dashed
-            cursor-pointer hover:shadow-md"
+            className="bg-gray-100 dark:bg-gray-800 p-10 rounded-2xl
+            items-center flex flex-col border-2 border-dashed border-gray-300 dark:border-gray-600
+            cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            <h2 className="text-3xl">+</h2>
-            <h2>Create New Income Source</h2>
+            <h2 className="text-3xl text-gray-700 dark:text-gray-300">+</h2>
+            <h2 className="text-gray-700 dark:text-gray-300">Create New Income Source</h2>
           </div>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="bg-white dark:bg-gray-800">
           <DialogHeader>
-            <DialogTitle>Create New Income Source</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-gray-900 dark:text-gray-100">Create New Income Source</DialogTitle>
+            <DialogDescription className="text-gray-600 dark:text-gray-400">
               <div className="mt-5">
                 <Button
                   variant="outline"
-                  className="text-lg"
+                  className="text-lg border-gray-300 dark:border-gray-600"
                   onClick={() => setOpenEmojiPicker(!openEmojiPicker)}
                 >
                   {emojiIcon}
@@ -89,18 +89,20 @@ function CreateIncomes({ refreshData }) {
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Source Name</h2>
+                  <h2 className="text-gray-800 dark:text-gray-200 font-medium my-1">Source Name</h2>
                   <Input
                     placeholder="e.g. Youtube"
                     onChange={(e) => setName(e.target.value)}
+                    className="dark:bg-gray-700 dark:border-gray-600"
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Montly Amount</h2>
+                  <h2 className="text-gray-800 dark:text-gray-200 font-medium my-1">Montly Amount</h2>
                   <Input
                     type="number"
                     placeholder="e.g. 5000₹"
                     onChange={(e) => setAmount(e.target.value)}
+                    className="dark:bg-gray-700 dark:border-gray-600"
                   />
                 </div>
               </div>

@@ -56,29 +56,29 @@ function SideNav() {
     console.log(path);
   }, [path]);
   return (
-    <div className="h-screen p-5 border shadow-sm">
-      {/* <Image src={'/logo.svg'}
-        alt='logo'
-        width={160}
-        height={100}
-        /> */}
-      <div className="flex flex-row items-center">
-        <Image src={"./chart-donut.svg"} alt="logo" width={40} height={25} />
-        <span className="text-blue-800 font-bold text-xl">FinTracker</span>
+    <div className="h-screen p-5 border-r border-gray-200 dark:border-gray-800 shadow-sm bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm transition-all duration-300">
+      <div className="flex flex-row items-center gap-2 mb-8">
+        <Image src={"/logo.svg"} alt="logo" width={40} height={40} className="transition-transform duration-300 hover:scale-110" />
+        <span className="text-blue-800 dark:text-blue-400 font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+          FinTracker
+        </span>
       </div>
       <div className="mt-5">
         {menuList.map((menu, index) => (
           <Link href={menu.path} key={index}>
             <h2
               className={`flex gap-2 items-center
-                    text-gray-500 font-medium
+                    text-gray-500 dark:text-gray-400 font-medium
                     mb-2
-                    p-4 cursor-pointer rounded-full
-                    hover:text-primary hover:bg-blue-100
-                    ${path == menu.path && "text-primary bg-blue-100"}
+                    p-4 cursor-pointer rounded-xl
+                    transition-all duration-300
+                    hover:text-blue-600 dark:hover:text-blue-400 
+                    hover:bg-blue-50 dark:hover:bg-gray-800
+                    hover:shadow-md transform hover:translate-x-1
+                    ${path == menu.path && "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-gray-800 shadow-md"}
                     `}
             >
-              <menu.icon />
+              <menu.icon className="transition-transform duration-300" />
               {menu.name}
             </h2>
           </Link>
@@ -86,10 +86,10 @@ function SideNav() {
       </div>
       <div
         className="fixed bottom-10 p-5 flex gap-2
-            items-center"
+            items-center transition-all duration-300"
       >
         <UserButton />
-        Profile
+        <span className="text-gray-600 dark:text-gray-400">Profile</span>
       </div>
     </div>
   );
