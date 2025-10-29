@@ -7,6 +7,8 @@ import {
   CircleDollarSign,
   TrendingUp,
   TrendingDownIcon,
+  BookOpen,
+  MessageSquare,
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -37,18 +39,18 @@ function SideNav() {
       icon: ReceiptText,
       path: "/dashboard/expenses",
     },
-    // {
-    //   id: 2,
-    //   name: "Investments",
-    //   icon: TrendingUp,
-    //   path: "/dashboard/investments",
-    // },
-    // {
-    //   id: 2,
-    //   name: "Debts",
-    //   icon: TrendingDownIcon,
-    //   path: "/dashboard/debts",
-    // },
+    {
+      id: 4,
+      name: "Insights",
+      icon: BookOpen,
+      path: "/dashboard/insights",
+    },
+    {
+      id: 5,
+      name: "AI Assistant",
+      icon: MessageSquare,
+      path: "/dashboard/assistant",
+    },
   ];
   const path = usePathname();
 

@@ -82,10 +82,10 @@
   dependencies:
     csstype "3.1.1"
 
-"@google/generative-ai@^0.21.0":
-  version "0.21.0"
-  resolved "https://registry.npmjs.org/@google/generative-ai/-/generative-ai-0.21.0.tgz"
-  integrity sha512-7XhUbtnlkSEZK15kN3t+tzIMxsbKm/dSkKBFalj+20NvPKe1kBY7mR2P7vuijEn+f06z5+A8bVGKO0v39cr6Wg==
+"@google/generative-ai@^0.17.2":
+  version "0.17.2"
+  resolved "https://registry.npmjs.org/@google/generative-ai/-/generative-ai-0.17.2.tgz"
+  integrity sha512-TRKwCCqFe8JawNpvwk5FNcE9CQGUUjROiUxpH+uUR46sjLkgsR2v4+clu2axxnzEd9rnMpUNAJriUXeEu0zFBw==
 
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"

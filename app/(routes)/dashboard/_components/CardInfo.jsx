@@ -14,6 +14,7 @@ function CardInfo({ budgetList, incomeList }) {
   const [totalSpend, setTotalSpend] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
   const [financialAdvice, setFinancialAdvice] = useState("");
+  const [isLoadingAdvice, setIsLoadingAdvice] = useState(false);
 
   useEffect(() => {
     if (budgetList.length > 0 || incomeList.length > 0) {
@@ -21,20 +22,26 @@ function CardInfo({ budgetList, incomeList }) {
     }
   }, [budgetList, incomeList]);
 
-  useEffect(() => {
-    if (totalBudget > 0 || totalIncome > 0 || totalSpend > 0) {
-      const fetchFinancialAdvice = async () => {
-        const advice = await getFinancialAdvice(
-          totalBudget,
-          totalIncome,
-          totalSpend
-        );
-        setFinancialAdvice(advice);
-      };
-
-      fetchFinancialAdvice();
+  const handleGetAdvice = async () => {
+    if (totalBudget === 0 && totalIncome === 0 && totalSpend === 0) {
+      return;
     }
-  }, [totalBudget, totalIncome, totalSpend]);
+    
+    setIsLoadingAdvice(true);
+    try {
+      const advice = await getFinancialAdvice(
+        totalBudget,
+        totalIncome,
+        totalSpend
+      );
+      setFinancialAdvice(advice);
+    } catch (error) {
+      console.error("Error fetching advice:", error);
+      setFinancialAdvice("Sorry, I couldn't fetch the financial advice at this moment. Please try again later.");
+    } finally {
+      setIsLoadingAdvice(false);
+    }
+  };
 
   const CalculateCardInfo = () => {
     console.log(budgetList);
@@ -60,22 +67,40 @@ function CardInfo({ budgetList, incomeList }) {
     <div>
       {budgetList?.length > 0 ? (
         <div>
-          <div className="p-7 border border-gray-200 dark:border-gray-700 mt-4 -mb-1 rounded-2xl flex items-center justify-between bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="">
-              <div className="flex mb-2 flex-row space-x-2 items-center">
-                <h2 className="text-md font-semibold text-gray-700 dark:text-gray-300">FinTracker AI</h2>
-                <Sparkles
-                  className="rounded-full text-white w-10 h-10 p-2
+          <div className="p-7 border border-gray-200 dark:border-gray-700 mt-4 -mb-1 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex mb-3 flex-row space-x-2 items-center">
+                  <h2 className="text-md font-semibold text-gray-700 dark:text-gray-300">FinTracker AI</h2>
+                  <Sparkles
+                    className="rounded-full text-white w-10 h-10 p-2
     bg-gradient-to-r
     from-pink-500
     via-red-500
     to-yellow-500
     background-animate transition-transform duration-300 hover:scale-110"
-                />
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <h2 className="font-light text-md text-gray-600 dark:text-gray-400 flex-1">
+                    {financialAdvice || "Click the button to get personalized financial advice based on your current finances"}
+                  </h2>
+                  <button
+                    onClick={handleGetAdvice}
+                    disabled={isLoadingAdvice || (totalBudget === 0 && totalIncome === 0 && totalSpend === 0)}
+                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 whitespace-nowrap"
+                  >
+                    {isLoadingAdvice ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        <span>Getting Advice...</span>
+                      </>
+                    ) : (
+                      <span>Get AI Advice</span>
+                    )}
+                  </button>
+                </div>
               </div>
-              <h2 className="font-light text-md text-gray-600 dark:text-gray-400">
-                {financialAdvice || "Loading financial advice..."}
-              </h2>
             </div>
           </div>
 
