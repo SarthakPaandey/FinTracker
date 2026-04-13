@@ -1,9 +1,51 @@
-FinTracker is a personal finance management application built with Next.js. It allows users to track their finances, likely including expenses and budgets, with an added layer of AI-driven insights.
+# FinTracker
 
-Key Features & Technologies
-Core Functionality: Tracking financial data, visualized through charts and dashboards using Recharts.
-AI Integration: It uses @google/generative-ai (Google Gemini), suggesting it provides AI-powered financial advice, automated expense categorization, or budget optimization.
-Authentication: Secured by Clerk for user sign-in and management.
-Database: Uses MongoDB (via Mongoose) to store user transactions and budget data.
-Frontend Stack: Built with React 18 and Tailwind CSS, using Shadcn/UI (Radix UI) for components and Framer Motion for animations.
-Deployment: The project is hosted on Vercel at fin-tracker-blond.vercel.app.
+A personal finance management application built with **Next.js** that helps users track expenses, manage budgets, and receive AI-driven financial insights.
+
+## 🔗 Live Demo
+
+[fin-tracker-blond.vercel.app](https://fin-tracker-blond.vercel.app)
+
+## ✨ Features
+
+- 📊 **Financial Dashboard** — Visualize spending with charts and dashboards (Recharts)
+- 🤖 **AI Insights** — Powered by Google Gemini for smart financial advice and expense categorization
+- 🔐 **Authentication** — Secure sign-in via Clerk
+- 🗄️ **Data Persistence** — MongoDB (Mongoose) for storing transactions and budget data
+- 🎨 **Modern UI** — Built with Tailwind CSS, Shadcn/UI (Radix UI), and Framer Motion animations
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | Next.js 14, React 18, Tailwind CSS |
+| UI Components | Shadcn/UI, Radix UI, Framer Motion |
+| AI | Google Gemini (`@google/generative-ai`) |
+| Auth | Clerk |
+| Database | MongoDB, Mongoose |
+| Charts | Recharts |
+| Deployment | Vercel |
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/SarthakPaandey/FinTracker.git
+cd FinTracker
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Fill in CLERK_SECRET_KEY, MONGODB_URI, GOOGLE_AI_API_KEY, etc.
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📄 License
+
+MIT
