@@ -26,6 +26,27 @@ A personal finance management application built with **Next.js** that helps user
 | Charts | Recharts |
 | Deployment | Vercel |
 
+## 🧩 Architecture Diagram
+
+```mermaid
+flowchart TD
+    U[User Browser]
+    C[Clerk Authentication]
+    FE[Next.js App Router UI<br/>Dashboard • Budgets • Expenses • Incomes • Insights • Assistant]
+    API[Next.js API Routes<br/>/api/budgets • /api/expenses • /api/incomes • /api/assistant/chat]
+    DB[(MongoDB<br/>Budgets • Expenses • Incomes)]
+    AI[Google Gemini API]
+    V[Vercel Hosting]
+
+    U --> FE
+    FE --> C
+    FE --> API
+    API --> DB
+    API --> AI
+    V --> FE
+    V --> API
+```
+
 ## 🚀 Getting Started
 
 ```bash
